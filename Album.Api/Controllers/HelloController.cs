@@ -14,11 +14,13 @@ namespace Album.Api.Controllers
             _greetingService = new GreetingService();
         }
 
-        [HttpGet("{name}")]
-        public IActionResult GetGreeting(string name)
+
+        [HttpGet]
+        public IActionResult GetGreeting([FromQuery] string? name)
         {
             var message = _greetingService.Greet(name);
             return Ok(message);
         }
+
     }
 }
