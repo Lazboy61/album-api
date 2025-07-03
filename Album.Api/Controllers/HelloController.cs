@@ -4,7 +4,7 @@ using Album.Api.Services;
 namespace Album.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]  // Ik raad aan om 'api/' prefix toe te voegen
     public class HelloController : ControllerBase
     {
         private readonly GreetingService _greetingService;
@@ -14,13 +14,10 @@ namespace Album.Api.Controllers
             _greetingService = new GreetingService();
         }
 
-
         [HttpGet]
-        public IActionResult GetGreeting([FromQuery] string? name)
+        public IActionResult Get([FromQuery] string? name)
         {
-            var message = _greetingService.Greet(name);
-            return Ok(message);
+            return Ok(_greetingService.Greet(name));
         }
-
     }
 }
