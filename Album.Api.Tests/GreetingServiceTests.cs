@@ -19,6 +19,9 @@ namespace Album.Api.Tests
 
             // Assert
             Assert.Equal($"Hello Hasan from {hostname} v2", result);
+
+
+
         }
 
         [Theory]
@@ -33,8 +36,10 @@ namespace Album.Api.Tests
             // Act
             var result = _service.Greet(input);
 
+
             // Assert
             Assert.Equal($"Hello World from {hostname} v2", result);
+
         }
     }
 }
