@@ -41,9 +41,9 @@ jobs:
       # 🐳 Docker image build, tag en push
       - name: Build, tag, and push image to ECR
         env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: cnsd/album
           IMAGE_TAG: ${{ github.run_number }}
         run: |
-          docker build -t $ECR_REPOSITORY:$IMAGE_TAG -f Album.Api/Dockerfile Album.Api
-          docker tag $ECR_REPOSITORY:$IMAGE_TAG 672730651398.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
-          docker push 672730651398.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Album.Api/Dockerfile Album.Api
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
