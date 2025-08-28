@@ -9,8 +9,10 @@ namespace Album.Api.Services
             var hostname = Dns.GetHostName();
             if (string.IsNullOrWhiteSpace(name))
                 return $"Hello World from {hostname} v2";
+            return $"Hello {name} from {Dns.GetHostName()} v2";
 
-            return $"Hello {name} from {hostname} v2";
+
+
         }
     }
 }
